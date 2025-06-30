@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import CarForm from "../components/CarForm";
 
+const baseURL = import.meta.env.VITE_API_URL;
 
 export default function Admin() {
   const [cars, setCars] = useState([]);
@@ -13,12 +14,12 @@ export default function Admin() {
   }, []);
 
   const fetchCars = async () => {
-    const res = await axios.get("/api/cars");
+    const res = await axios.get(`${baseURL}/api/cars`);
     setCars(res.data);
   };
 
   const deleteCar = async (id) => {
-    await axios.delete(`/api/cars/${id}`, {
+    await axios.delete(`${baseURL}/api/cars/${id}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     fetchCars();

@@ -16,7 +16,6 @@ useEffect(()=>{
     }
     return(
         <nav className="list-none flex justify-evenly">
-            <Link to="/cars"> Home </Link>
             <Link to="/cars">CarList</Link>
             <Link to="/admin">Admin Dashboard</Link>
             {token ? <button className="hover:cursor-pointer" onClick={handleLogout}>Logout</button>:<Link to="/login">Login</Link>}

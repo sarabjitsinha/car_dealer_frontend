@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+const baseURL = import.meta.env.VITE_API_URL;
+
 export default function CarForm() {
   const navigate = useNavigate();
 
@@ -41,7 +43,7 @@ export default function CarForm() {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-       await axios.post("/api/cars", formData, {
+       await axios.post(`${baseURL}/api/cars`, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

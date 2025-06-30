@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import MetaTags from "../components/MetaTags";
 
+const baseURL = import.meta.env.VITE_API_URL;
+
 export default function CarDetail() {
   const { slug } = useParams();
   const [car, setCar] = useState(null);
 
   useEffect(() => {
-    axios.get("/api/cars").then((res) => {
+    axios.get(`${baseURL}/api/cars`).then((res) => {
       const found = res.data.find((c) => c.slug === slug);
       setCar(found);
     });

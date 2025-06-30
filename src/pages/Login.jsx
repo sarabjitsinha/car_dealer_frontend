@@ -4,6 +4,8 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { mycontext } from "../../utils/Myprovider";
 
+const baseURL = import.meta.env.VITE_API_URL;
+
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -16,7 +18,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     try {
-      const res = await axios.post("/api/auth/login", { username, password });
+      const res = await axios.post(`https://car-dealer-backend-0gi2.onrender.com/api/auth/login`, { username, password },{withCredentials:true});
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("useron",username)
       setuser(username)
