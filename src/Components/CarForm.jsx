@@ -41,18 +41,17 @@ export default function CarForm() {
     try {
       setLoading(true);
       const token = localStorage.getItem("token");
-      const res = await axios.post("/api/cars", formData, {
+       await axios.post("/api/cars", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
         },
       });
-
       alert("Car added successfully!");
       navigate("/cars");
     } catch (err) {
       console.error(err);
-      alert("Failed to add car");
+      alert("Failed to add car, check uniqueness of Slug");
     } finally {
       setLoading(false);
     }
@@ -111,9 +110,10 @@ export default function CarForm() {
         rows="3"
         required
       />
-
+      <label htmlFor="file">Please upload image of the car</label>
       <input
         type="file"
+        name="file"
         accept="image/*"
         onChange={handleImageChange}
         className="w-full"

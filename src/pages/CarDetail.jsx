@@ -22,6 +22,7 @@ export default function CarDetail() {
       <h1 className="text-2xl font-bold">{car.name}</h1>
       <p>{car.description}</p>
       <img src={car.image} alt={car.name} className="mt-4 w-full max-w-md" />
+      <p className="font-bold">₹ {car.price}</p>
     </div>
   );
 }

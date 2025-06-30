@@ -3,7 +3,6 @@ import { HelmetProvider } from "react-helmet-async";
 import { Suspense, lazy,useContext, useEffect } from "react";
 import './App.css'
 import Header from "./Components/Header";
-import Myprovider from "../utils/Myprovider";
 import { mycontext } from "../utils/Myprovider";
 
 const CarList = lazy(() => import("./pages/CarList"));
@@ -29,7 +28,7 @@ function App() {
             <Route path="/cars" element={<CarList />} />
             <Route path="/cars/:slug" element={<CarDetail />} />
             <Route path="/login" element={<Login />} />
-            <Route path="/admin" element={user ?<Admin />:<div>Please login to view this page</div>} />
+            <Route path="/admin" element={user ? <Admin />:<div>Please login to view this page</div>} />
           </Routes>
         </Suspense>
       </BrowserRouter>

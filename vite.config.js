@@ -8,7 +8,7 @@ export default defineConfig({
   server:{
     proxy:{
       '/api':{
-        target:"http://localhost:5000",
+        target:"https://car-dealer-backend-0gi2.onrender.com",
         changeOrigin:true,
         secure:false
       }
